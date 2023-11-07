@@ -41,7 +41,7 @@ Start the development server:
    npm start`
 ## Live Demo
 
-Check out the live demo of the app [here](https://your-live-demo-link).
+You can check out the live demo of the app by visiting [here](https://your-live-demo-link).
 
 ## Screenshots
 
@@ -56,7 +56,7 @@ Contributions and improvements are welcome! Feel free to submit a pull request w
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-EOL
+
 
 
 
