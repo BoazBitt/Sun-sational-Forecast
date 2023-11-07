@@ -35,10 +35,28 @@ This web app is a simple, responsive weather application built with React and Ty
 3. Create a .env file in the project root directory with your AccuWeather API key:
    ```bash
    REACT_APP_SERVER=http://dataservice.accuweather.com/
-   REACT_APP_API_KEY=YOUR_ACCUWEATHER_API_KEY
+   REACT_APP_API_KEY=YOUR_ACCUWEATHER_API_KEY`
 Start the development server:
    ```bash
-   npm start
+   npm start`
+## Live Demo
+
+Check out the live demo of the app [here](https://your-live-demo-link).
+
+## Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+
+![Screenshot 2](screenshots/screenshot2.png)
+
+## Contributing
+
+Contributions and improvements are welcome! Feel free to submit a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+EOL
 
 
 
