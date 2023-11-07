@@ -39,25 +39,6 @@ This web app is a simple, responsive weather application built with React and Ty
 Start the development server:
    ```bash
    npm start`
-## Live Demo
-
-You can check out the live demo of the app by visiting [here](https://your-live-demo-link).
-
-## Screenshots
-
-![Screenshot 1](screenshots/screenshot1.png)
-
-![Screenshot 2](screenshots/screenshot2.png)
-
-## Contributing
-
-Contributions and improvements are welcome! Feel free to submit a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
 
 
 
