@@ -9,6 +9,7 @@ import { DegreeAction } from "../../../store/slice/degree.slice";
 const NavBar = () => {
   const dispatch = useDispatch();
   const degree = useSelector((state: RootState) => state.degree.degree);
+  const mode = useSelector((state: RootState) => state.theme.mode);
 
   return (
     <header className={classes.__navbar}>
@@ -38,8 +39,20 @@ const NavBar = () => {
         </span>
       </div>
       <div className={classes.__buttons}>
-        <Link to={"weather"}>Main</Link>
-        <Link to={"favorites"}>Favorites</Link>
+        <Link
+          style={mode === "light" ? { color: "black" } : { color: "white" }}
+          className={classes.__link__style}
+          to={"weather"}
+        >
+          Main
+        </Link>
+        <Link
+          style={mode === "light" ? { color: "black" } : { color: "white" }}
+          className={classes.__link__style}
+          to={"favorites"}
+        >
+          Favorites
+        </Link>
       </div>
     </header>
   );
