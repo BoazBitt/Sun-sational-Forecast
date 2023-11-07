@@ -50,9 +50,6 @@ const MainPage = () => {
       />
 
       <SearchBar setSelectedCity={setSelectedCity} />
-      <h1>this is the env!!!{process.env.REACT_APP_APIKEY}</h1>
-      <h1>this is the env!!!{process.env.REACT_APP_SERVER}</h1>
-
       {selectedCity && (
         <div className={classes.__mainpage}>
           <section className={classes.__section_one}>
