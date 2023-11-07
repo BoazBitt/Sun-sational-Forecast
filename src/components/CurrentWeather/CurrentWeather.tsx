@@ -14,7 +14,6 @@ import { iconInterface } from "../../utils/interfaces/icon.interface";
 import getIcon from "../../assets/icons/Icons";
 
 const CurrentWeather = ({ city }: Props) => {
-  console.count('weather')
   let weatherIcon: iconInterface | null = null;
   //eslint-disable-next-line
   const { data, isLoading } = useQuery({

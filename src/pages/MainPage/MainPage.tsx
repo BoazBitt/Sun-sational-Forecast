@@ -19,7 +19,6 @@ export interface Props {
 }
 
 const MainPage = () => {
-  console.count("main")
   const { state } = useLocation();
   
   const mode = useSelector((state: RootState) => state.theme.mode);
