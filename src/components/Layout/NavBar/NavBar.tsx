@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <header className={classes.__navbar}>
       <div>
-        <span>Weather API</span>
+        <span>Sun-sational Forecast</span>
       </div>
       <div style={{ display: "flex", gap: "20px" }}>
         <span
