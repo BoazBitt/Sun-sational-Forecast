@@ -35,6 +35,11 @@ Start the development server
 npm start
 
 ```
+### Tests
+```bash
+npm test
+
+```
 ## Live Demo
 
 You can check out the live demo of the app by visiting [here](https://choosealicense.com/licenses/mit/)
