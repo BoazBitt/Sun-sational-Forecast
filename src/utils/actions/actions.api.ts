@@ -73,6 +73,8 @@ export const getForecast = async (
       }
     );
     data.Headline.IsDayTime = IsDayTime;
+    console.log(data);
+    
     return data;
   } catch (error: any) {
     return error;

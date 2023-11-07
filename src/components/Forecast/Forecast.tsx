@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 const Forecast = ({ city }: Props) => {
   const deg = useSelector((state: RootState) => state.degree.degree);
-
-  const {data, isLoading} = useQuery({ queryKey: ['forecast',deg], queryFn: ()=> {
+  console.count('for')
+  const {data, isLoading} = useQuery({ queryKey: ['forecast',deg,city.Key], queryFn: ()=> {
     if(deg==='C') return getForecast(city.Key, true, true)
     else return getForecast(city.Key, true)
   }})

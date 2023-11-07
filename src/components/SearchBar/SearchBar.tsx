@@ -27,13 +27,17 @@ const SearchBar = ({setSelectedCity}:SearchBarProps) => {
   })
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if(!REGEX.test(e.target.value)) return toast.error("Please enter only english letters")
-    setSearch(e.target.value);
-    mutation.mutate(e.target.value)
+    e.preventDefault();
+    const searchValue = e.target.value;
+    if(!REGEX.test(searchValue.split(',')[0])) return toast.error("Please enter only english letters")
+    setSearch((searchValue).split(',')[0]);
+    mutation.mutate((searchValue).split(',')[0])
   };
 
   const optionHandlerSelectd = () => {
     const selectedCityItem = results.find((res) => res.LocalizedName === search);
+    console.log(selectedCityItem);
+    
     if(!selectedCityItem) return toast.error(`couldn't find a city based on your search` )
     setSelectedCity(selectedCityItem);
   }
@@ -49,7 +53,7 @@ const SearchBar = ({setSelectedCity}:SearchBarProps) => {
         />
         <datalist id="cityOptions">
           {results.map((obj, index) => (
-            <option key={index} value={`${obj.LocalizedName}`} />
+            <option key={index} value={`${obj.LocalizedName},${obj.Country.LocalizedName}`} />
           ))}
         </datalist>
       </div>

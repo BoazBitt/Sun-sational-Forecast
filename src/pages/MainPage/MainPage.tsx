@@ -32,6 +32,7 @@ const MainPage = () => {
     if(!state) fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.count(selectedCity?.Country.LocalizedName)
 
   return (
     <>

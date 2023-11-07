@@ -7,8 +7,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    // <React.Suspense>
+    <React.Suspense>
       <App />
-    // </React.Suspense>
+    </React.Suspense>
 );
 
