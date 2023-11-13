@@ -1,17 +1,28 @@
-.__navbar{
+.__navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  .__title {
+    font-family: "Caveat", cursive;
+    font-family: "Lobster", sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-family: "Permanent Marker", cursive;
+    font-size: xx-large;
+  }
+  .__toggles {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    .__buttons{
-        display: flex;
-        gap:10px;
-        .__link__style{
-            text-decoration: none !important;
-        }
-        // .__link__style:hover{
-        //     font-weight: bold;
-
-        // }
+    gap: 20px;
+    span {
+      cursor: pointer;
+ 
     }
+  }
+  .__buttons {
+    display: flex;
+    gap: 10px;
+    .__link__style {
+      text-decoration: none !important;
+    }
+  }
 }

@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Degree {
-    degree: 'C' | 'F';
+export enum Degrees {
+  Celsius,
+  Fahrenheit,
 }
 
-const initialDegreeState: Degree = {
-    degree:"C",
+interface DegreeState {
+  degree: Degrees;
+}
+
+const initialDegreeState: DegreeState = {
+  degree: Degrees.Celsius,
 };
 
 const DegreeSlice = createSlice({
@@ -13,8 +18,9 @@ const DegreeSlice = createSlice({
   initialState: initialDegreeState,
   reducers: {
     changeDegree(state) {
-      if(state.degree ===  "C") return {degree: "F"}
-      return {degree:"C"}
+      return {
+        degree: state.degree === Degrees.Celsius ? Degrees.Fahrenheit : Degrees.Celsius,
+      };
     },
   },
 });

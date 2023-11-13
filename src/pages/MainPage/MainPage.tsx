@@ -4,60 +4,47 @@ import classes from "./MainPage.module.scss";
 import FavoritesButton from "../../components/FavoritesButton/FavoritesButton";
 import Forecast from "../../components/Forecast/Forecast";
 import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
+import MyToastContainer from "../../components/Layout/MyToastContainer/MyToastContainer";
 import { LocationData } from "../../utils/interfaces/location.interface";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import {
-  getMyLocation,
-} from "../../utils/actions/actions.api";
+import { getMyLocation } from "../../utils/actions/actions.api";
 import { useLocation } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface Props {
-  city: LocationData;
+  location: LocationData;
 }
 
 const MainPage = () => {
   const { state } = useLocation();
-  
-  const mode = useSelector((state: RootState) => state.theme.mode);
-  const [selectedCity, setSelectedCity] = useState<LocationData | null>(state ? state.city : null);
+  const [selectedLocation, setLocation] = useState<LocationData | null>(
+    state?.location ?? null
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getMyLocation();
-      setSelectedCity(data);
-    }
+      setLocation(data);
+    };
 
-    if(!state) fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.count(selectedCity?.Country.LocalizedName)
+    if (!state) fetchData();
+  }, [state]);
+
+  const handleSearch = (newLocation: LocationData) => {
+    setLocation(newLocation);
+  };
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={mode === "light" ? "dark" : "light"}
-      />
-
-      <SearchBar setSelectedCity={setSelectedCity} />
-      {selectedCity && (
+      <MyToastContainer />
+      <SearchBar handleSearch={handleSearch} />
+      {selectedLocation && (
         <div className={classes.__mainpage}>
           <section className={classes.__section_one}>
-            <CurrentWeather city={selectedCity} />
-            <FavoritesButton city={selectedCity} />
+            <CurrentWeather location={selectedLocation} />
+            <FavoritesButton location={selectedLocation} />
           </section>
           <section className={classes.__section_two}>
-            <Forecast city={selectedCity} />
+            <Forecast location={selectedLocation} />
           </section>
         </div>
       )}

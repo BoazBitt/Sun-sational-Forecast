@@ -1,17 +1,19 @@
-.__mainpage{
-    height: 50vh;
+.__mainpage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .__section_one {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    .__section_one{
-        display: flex;
-        justify-content: space-between;
-        height: 100%;
-        width: 100%;
-    }
-    .__section_two{
-        display: flex;
-        width: 100%;
-        height: 100%;
-    }
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  .__section_two {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
 }

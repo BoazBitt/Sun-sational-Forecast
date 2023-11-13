@@ -1,8 +1,14 @@
-.__buttons{
-    display: flex;
-    height: 250px;
-    align-items: center;
-    width: 500px;
-    justify-content: center;
-    gap: 20px;
+.__buttons {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  width: 500px;
+  justify-content: center;
+  gap: 20px;
+
+  .__button {
+    // border: 3px solid;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }

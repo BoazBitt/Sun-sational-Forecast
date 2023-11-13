@@ -1,19 +1,24 @@
 import React from "react";
+import classes from "./Forecast.module.scss";
+import Day from "./Day/Day";
+import { Day as DayType } from "./Day/day.interface";
 import { Props } from "../../pages/MainPage/MainPage";
 import { getForecast } from "../../utils/actions/actions.api";
-import Day from "./Day/Day";
-import classes from "./Forecast.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-const Forecast = ({ city }: Props) => {
-  const deg = useSelector((state: RootState) => state.degree.degree);
-  console.count('for')
-  const {data, isLoading} = useQuery({ queryKey: ['forecast',deg,city.Key], queryFn: ()=> {
-    if(deg==='C') return getForecast(city.Key, true, true)
-    else return getForecast(city.Key, true)
-  }})
-  
+import { Degrees } from "../../store/slice/degree.slice";
+
+const Forecast = ({ location }: Props) => {
+  const currentDegree = useSelector((state: RootState) => state.degree.degree);
+  const isCelsius: boolean = currentDegree === Degrees.Celsius;
+
+  const degree = useSelector((state: RootState) => state.degree.degree);
+  const { data, isLoading } = useQuery({
+    queryKey: ["forecast", location.Key, degree],
+    queryFn: () => getForecast(location.Key, true, isCelsius),
+  });
+
   if (isLoading) return <>Loading...</>;
 
   return (
@@ -23,8 +28,14 @@ const Forecast = ({ city }: Props) => {
         <p>{data.Headline.Text}</p>
       </div>
       <div className={classes.__cards}>
-        {data.DailyForecasts.map((day: any, index: number) => {
-          return <Day day={day} key={index} IsDayTime={data.Headline.IsDayTime} />;
+        {data.DailyForecasts.map((day: DayType) => {
+          return (
+            <Day
+              day={day}
+              key={day.EpochDate}
+              IsDayTime={data.Headline.IsDayTime}
+            />
+          );
         })}
       </div>
     </div>

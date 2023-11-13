@@ -1,34 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import classes from "./NavBar.module.scss";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import { ThemeAction } from "../../../store/slice/theme.slice";
-import { DegreeAction } from "../../../store/slice/degree.slice";
+import { ThemeAction, ThemeMode } from "../../../store/slice/theme.slice";
+import { DegreeAction, Degrees } from "../../../store/slice/degree.slice";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const degree = useSelector((state: RootState) => state.degree.degree);
-  const mode = useSelector((state: RootState) => state.theme.mode);
+  const currentDegree = useSelector((state: RootState) => state.degree.degree);
+  const isCelsius: boolean = currentDegree === Degrees.Celsius;
+  const { mode } = useSelector((state: RootState) => state.theme);
 
   return (
     <header className={classes.__navbar}>
-      <div>
+      <div className={classes.__title}>
         <span>Sun-sational Forecast</span>
       </div>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <span
-          style={{ cursor: "pointer" }}
-          onClick={() => dispatch(ThemeAction.changeTheme())}
-        >
-          Theme
+      <div className={classes.__toggles}>
+        <span onClick={() => dispatch(ThemeAction.changeTheme())}>
+          {mode === ThemeMode.Light ? (
+            <div>Switch to dark</div>
+          ) : (
+            <div>Switch to light</div>
+          )}
         </span>
-        <span
-          style={{ cursor: "pointer" }}
-          onClick={() => dispatch(DegreeAction.changeDegree())}
-        >
-          {degree === "C" ? (
+        <span onClick={() => dispatch(DegreeAction.changeDegree())}>
+          {isCelsius ? (
             <>
+              {" "}
               <span style={{ color: "red" }}>Metric</span> / Imperial
             </>
           ) : (
@@ -40,14 +40,18 @@ const NavBar = () => {
       </div>
       <div className={classes.__buttons}>
         <Link
-          style={mode === "light" ? { color: "black" } : { color: "white" }}
+          style={
+            mode === ThemeMode.Light ? { color: "black" } : { color: "white" }
+          }
           className={classes.__link__style}
           to={"weather"}
         >
           Main
         </Link>
         <Link
-          style={mode === "light" ? { color: "black" } : { color: "white" }}
+          style={
+            mode === ThemeMode.Light ? { color: "black" } : { color: "white" }
+          }
           className={classes.__link__style}
           to={"favorites"}
         >
