@@ -1,4 +1,4 @@
-import { iconInterface } from '../../utils/interfaces/icon.interface'
+import { iconInterface } from "../../utils/interfaces/icon.interface";
 const Icons: iconInterface[] = [
   {
     id: 1,
@@ -276,11 +276,12 @@ const Icons: iconInterface[] = [
   },
 ];
 
-const getIcon =  (WeatherText:string,IsDayTime:boolean):iconInterface =>{
-    const filteredIcons:iconInterface[] = Icons.filter(icon=>icon.text.toLowerCase()===WeatherText.toLowerCase())
-    // if (filteredIcons.length===0) {toast.warning("Couldnt find apropiate icon");return }
-    if (filteredIcons.length===1) return filteredIcons[0];
-    return filteredIcons.filter(icon=>icon.day===IsDayTime)[0];
-}
+const getIcon = (WeatherText: string, IsDayTime: boolean): iconInterface => {
+  const filteredIcons: iconInterface[] = Icons.filter(
+    (icon) => icon.text.toLowerCase() === WeatherText.toLowerCase()
+  );
+  if (filteredIcons.length === 1) return filteredIcons[0];
+  return filteredIcons.filter((icon) => icon.day === IsDayTime)[0];
+};
 
 export default getIcon;
