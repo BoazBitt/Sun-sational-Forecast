@@ -22,7 +22,7 @@ This web app is a simple, responsive weather application built with React and Ty
 ```bash
 1. Clone this repository to your local machine.
 2. Install the required dependencies:
-npm install
+yarn install
 ```
 Create a .env file in the project root directory with your AccuWeather API key and API server:
 ```bash
@@ -32,7 +32,7 @@ REACT_APP_API_KEY=YOUR_ACCUWEATHER_API_KEY
 ```
 Start the development server
 ```bash
-npm start
+yarn start
 
 ```
 ### Tests
